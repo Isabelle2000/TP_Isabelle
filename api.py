@@ -9,7 +9,7 @@ def lister_parties(idul):
     Quelle est la sortie et/ou le retour de ma fonction? Permet de sortir le dictionnaire
     """
     url_lister = 'https://python.gel.ulaval.ca/quoridor/api/lister/'
-    rep = requests.get(url_lister, params={'idul': 'islev54'})
+    rep = requests.get(url_lister, params={'idul': idul})
     if rep.status_code == 200:
         rep = rep.text
         json_var = json.loads(rep)
@@ -20,4 +20,22 @@ def lister_parties(idul):
             url_lister, rep.status_code)
         )
 
-lister_parties('islev54')
+def initialiser_parties(idul):
+    """ 
+    Quest-ce que fais ma fonction? La fonction permet de débuter la partie
+    Quels sont les paramètres en entré de ma fonction? Un idul
+    Quelle est la sortie et/ou le retour de ma fonction? Permet de sortir un tuple constitué 
+    de l'identifiant de la partie et de l'état initial du jeu
+    """
+    url_initialiser = 'https://python.gel.ulaval.ca/quoridor/api/initialiser/'
+    try:
+        rep = requests.post(url_initialiser, data={'idul': idul})
+        if rep.status_code == 200:
+            json_rep = rep.json()
+            return json_rep['id'], json_rep['état']
+        else:
+            print("Le GET sur '{}' a produit le code d'erreur {}.".format(
+                url_initialiser, rep.status_code)
+            )
+    except RuntimeError as error:
+        print(error)
