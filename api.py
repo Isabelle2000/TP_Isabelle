@@ -46,7 +46,10 @@ def jouer_coup(id_partie, type_coup, position):
         rep = requests.post(url_coup, data={'id': id_partie, 'type': type_coup, 'pos': position})
         if rep.status_code == 200:
             json_rep = rep.json()
-            return json_rep
+            if 'gagnant' in json_res:
+                raise StopIteration(json__rep['gagnant'])
+            else:
+                return json_rep
         else:
             print("Le POST sur '{}' a produit le code d'erreur {}.".format(
                 url_coup, rep.status_code)
