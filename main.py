@@ -13,14 +13,14 @@ def analyser_commande():
 def afficher_damier_ascii(etat_de_jeu):
     damier, verticale, horizontale = [], [], []
     for i in range(9):
-        matrice_damiier, matrice_verticale, matrice_horizontale = [], [], []
+        matrice_damier, matrice_verticale, matrice_horizontale = [], [], []
         for j in range(9):
             matrice_damier.append('.')
             matrice_verticale.append(' ')
             matrice_horizontale.append('   ')
         damier.append(matrice_damier)
-        verticale.append(matrice_vertical)
-        horizontale.append(matrice_horizontal)
+        verticale.append(matrice_verticale)
+        horizontale.append(matrice_horizontale)
     posi_j_1 = etat_de_jeu['joueurs'][0]['pos']
     posi_j_2 = etat_de_jeu['joueurs'][1]['pos']
     damier[posi_j_1[1] - 1][posi_j_1[0] - 1] = '1'
@@ -81,3 +81,12 @@ def afficher_damier_ascii(etat_de_jeu):
     sortie += "--|-----------------------------------\n"
     sortie += "  | 1   2   3   4   5   6   7   8   9\n"
     print(sortie)
+
+if __name__ == '__main__':
+    pass
+    #init = api.initialiser_parties('islev54')
+    #print(init[0]) 
+    #partietest4 = 'ba930a7c-1599-45d8-acab-325c48f806b0'
+    #coup = api.jouer_coup(partietest4, 'D', (6, 4))
+    #afficher_damier_ascii(coup['état'])
+    #print(coup)
