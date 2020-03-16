@@ -1,3 +1,7 @@
+import argparse
+import api
+
+
 def analyser_commande():
     parser = argparse.ArgumentParser(description='Jeu Quoridor - phase 1')
     parser.add_argument('idul', metavar='IDUL', 
@@ -54,8 +58,8 @@ def afficher_damier_ascii(etat_de_jeu):
                 verticale[i][3] if verticale[i + 1][3] != '|' else '|', damier[i][3],
                 verticale[i][4] if verticale[i + 1][4] != '|' else '|', damier[i][4],
                 verticale[i][5] if verticale[i + 1][5] != '|' else '|', damier[i][5],
-                verticale[i][6] if verticale[i + 1][6] != '|' else '|', damiier[i][6],
-                verticale[i][7] if verticale[i + 1][7] != '|' else '|', damiier[i][7],
+                verticale[i][6] if verticale[i + 1][6] != '|' else '|', damier[i][6],
+                verticale[i][7] if verticale[i + 1][7] != '|' else '|', damier[i][7],
                 verticale[i][8] if verticale[i + 1][8] != '|' else '|', damier[i][8],
             )
             sortie = sortie[:-1]
@@ -77,10 +81,3 @@ def afficher_damier_ascii(etat_de_jeu):
     sortie += "--|-----------------------------------\n"
     sortie += "  | 1   2   3   4   5   6   7   8   9\n"
     print(sortie)
-
-def main():
-    args = analyser_commande()
-
-
-if __name__ == '__main__':
-    main()
