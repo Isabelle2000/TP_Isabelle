@@ -39,3 +39,17 @@ def initialiser_parties(idul):
             )
     except RuntimeError as error:
         print(error)
+
+def jouer_coup(id_partie, type_coup, position):
+    url_coup = 'https://python.gel.ulaval.ca/quoridor/api/jouer/'
+    try:
+        rep = requests.post(url_coup, data={'id': id_partie, 'type': type_coup, 'pos': position})
+        if rep.status_code == 200:
+            json_rep = rep.json()
+            return json_rep
+        else:
+            print("Le POST sur '{}' a produit le code d'erreur {}.".format(
+                url_coup, rep.status_code)
+            )
+    except RuntimeError as error:
+        print(error)
