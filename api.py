@@ -4,9 +4,8 @@ import json
 
 def lister_parties(idul):
     """ 
-    Quest-ce que fais ma fonction? La fonction permet de lister les parties
-    Quels sont les paramètres en entré de ma fonction? Un idul
-    Quelle est la sortie et/ou le retour de ma fonction? Permet de sortir le dictionnaire
+    La fonction permet de lister les parties en ayant comme entrée un idul
+    et permet de sortir le dictionnaire
     """
     url_lister = 'https://python.gel.ulaval.ca/quoridor/api/lister/'
     rep = requests.get(url_lister, params={'idul': idul})
@@ -22,10 +21,9 @@ def lister_parties(idul):
 
 def initialiser_parties(idul):
     """ 
-    Quest-ce que fais ma fonction? La fonction permet de débuter la partie
-    Quels sont les paramètres en entré de ma fonction? Un idul
-    Quelle est la sortie et/ou le retour de ma fonction? Permet de sortir un tuple constitué 
-    de l'identifiant de la partie et de l'état initial du jeu
+    La fonction permet de débuter la partie en ayant comme entrée un idul
+    et dont la sortie est un tuple constitué de l'identifiant de la partie
+     et de l'état initial du jeu.
     """
     url_initialiser = 'https://python.gel.ulaval.ca/quoridor/api/initialiser/'
     try:
@@ -46,7 +44,7 @@ def jouer_coup(id_partie, type_coup, position):
         rep = requests.post(url_coup, data={'id': id_partie, 'type': type_coup, 'pos': position})
         if rep.status_code == 200:
             json_rep = rep.json()
-            if 'gagnant' in json_res:
+            if 'gagnant' in json_rep:
                 raise StopIteration(json__rep['gagnant'])
             else:
                 return json_rep
