@@ -5,7 +5,8 @@ import json
 def lister_parties(idul):
     """ 
     La fonction permet de lister les parties en ayant comme entrée un idul
-    et permet de sortir le dictionnaire
+    et permet de sortir le dictionnaire ayant pour clé
+    les parties jouées listées (max 20) et un message en cas d'erreur
     """
     url_lister = 'https://python.gel.ulaval.ca/quoridor/api/lister/'
     rep = requests.get(url_lister, params={'idul': idul})
@@ -39,6 +40,13 @@ def initialiser_parties(idul):
         print(error)
 
 def jouer_coup(id_partie, type_coup, position):
+    """ 
+    La fonction permet de jouer un coup, c'est-à-dire de déplacer son pion sur une case adjacente
+    en ayant comme entrée l'identifiant de la partie, le type de coup, soit un déplacement, un ajout
+    de mur horizontal ou vertical et la position, soit du mur ou de la case où on veut déplacer le pion.
+    La sortie retourne un dictionnaire soit de 3 clés: l'état, un message et le gagnant ou: d'un message
+    dans la réponse en cas d'erreur.  
+    """
     url_coup = 'https://python.gel.ulaval.ca/quoridor/api/jouer/'
     try:
         rep = requests.post(url_coup, data={'id': id_partie, 'type': type_coup, 'pos': position})
