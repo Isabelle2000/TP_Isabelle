@@ -5,20 +5,23 @@ import json
 def lister_parties(idul):
     """ 
     La fonction permet de lister les parties en ayant comme entrée un idul
-    et permet de sortir le dictionnaire ayant pour clé
+    et affiche le dictionnaire ayant pour clé
     les parties jouées listées (max 20) et un message en cas d'erreur
     """
     url_lister = 'https://python.gel.ulaval.ca/quoridor/api/lister/'
-    rep = requests.get(url_lister, params={'idul': idul})
-    if rep.status_code == 200:
-        rep = rep.text
-        json_var = json.loads(rep)
-        json_str = json.dumps(json_var, indent=2)
-        print(json_str)    
-    else:
-        print("Le GET sur '{}' a produit le code d'erreur {}.".format(
-            url_lister, rep.status_code)
-        )
+    try:
+        rep = requests.get(url_lister, params={'idul': idul})
+        if rep.status_code == 200:
+            rep = rep.text
+            json_var = json.loads(rep)
+            json_str = json.dumps(json_var, indent=2)
+            print(json_str)    
+        else:
+            print("Le GET sur '{}' a produit le code d'erreur {}.".format(
+                url_lister, rep.status_code)
+            )
+    except RuntimeError as error:
+        print(error)
 
 def initialiser_parties(idul):
     """ 
@@ -54,6 +57,8 @@ def jouer_coup(id_partie, type_coup, position):
             json_rep = rep.json()
             if 'gagnant' in json_rep:
                 raise StopIteration(json__rep['gagnant'])
+            elif 'message' in json_rep:
+                print(json_rep['message'])
             else:
                 return json_rep
         else:
