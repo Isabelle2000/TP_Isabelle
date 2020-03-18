@@ -86,7 +86,7 @@ if __name__ == '__main__':
     pass
     #init = api.initialiser_parties('islev54')
     #print(init[0]) 
-    #partietest4 = 'ba930a7c-1599-45d8-acab-325c48f806b0'
-    #coup = api.jouer_coup(partietest4, 'D', (6, 4))
+    #partietest4 = '867b212b-4faa-41cf-99f4-d87951ba25ae'
+    #coup = api.jouer_coup(partietest4, 'D', (5, 2))
     #afficher_damier_ascii(coup['état'])
     #print(coup)
