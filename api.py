@@ -56,7 +56,7 @@ def jouer_coup(id_partie, type_coup, position):
         if rep.status_code == 200:
             json_rep = rep.json()
             if 'gagnant' in json_rep:
-                raise StopIteration(json__rep['gagnant'])
+                raise StopIteration(json_rep['gagnant'])
             elif 'message' in json_rep:
                 print(json_rep['message'])
             else:
