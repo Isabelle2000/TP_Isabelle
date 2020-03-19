@@ -65,8 +65,8 @@ def afficher_damier_ascii(etat_de_jeu):
             sortie = sortie[:-1]
             sortie += "|\n"
             sortie += "  |"
-            sortie += "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}".format(horizontale[i][0],
-                '-' if horizontale[i][0] == '---' else verticale[i + 1 if i < 8 else 0][1],
+            sortie += "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}".format(
+                horizontale[i][0], '-' if horizontale[i][0] == '---' else verticale[i + 1 if i < 8 else 0][1],
                 horizontale[i][1] if horizontale[i][0] != '---' else '---',
                 '-' if horizontale[i][1] == '---' else verticale[i + 1 if i < 8 else 0][2],
                 horizontale[i][2] if horizontale[i][1] != '---' else '---',
@@ -94,7 +94,7 @@ if __name__ == '__main__':
     pass
     #init = api.initialiser_parties('islev54')
     #print(init[0])
-    #partietest4 = '03f23797-b32b-4f72-938f-456309901202'
+    #partietest4 = '66a2937a-5b10-4dcb-9716-e0b236e026ce'
     #coup = api.jouer_coup(partietest4, 'D', (5, 2))
     #afficher_damier_ascii(coup['état'])
     #print(coup)
