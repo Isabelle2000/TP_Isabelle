@@ -4,7 +4,7 @@ import api
 
 def analyser_commande():
     parser = argparse.ArgumentParser(description='Jeu Quoridor - phase 1')
-    parser.add_argument('idul', metavar='IDUL', 
+    parser.add_argument('idul', metavar='IDUL',
                         default='islev54', help="IDUL du joueur.")
     parser.add_argument('-l', '--lister', dest='liste', help='Lister les identifiants de vos 20 dernières parties.')
     return parser.parse_args()
@@ -65,16 +65,24 @@ def afficher_damier_ascii(etat_de_jeu):
             sortie = sortie[:-1]
             sortie += "|\n"
             sortie += "  |"
-            sortie += "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}".format(
-                horizontale[i][0], '-' if horizontale[i][0] == '---' else verticale[i + 1 if i < 8 else 0][1],
-                horizontale[i][1] if horizontale[i][0] != '---' else '---', '-' if horizontale[i][1] == '---' else verticale[i + 1 if i < 8 else 0][2],
-                horizontale[i][2] if horizontale[i][1] != '---' else '---', '-' if horizontale[i][2] == '---' else verticale[i + 1 if i < 8 else 0][3],
-                horizontale[i][3] if horizontale[i][2] != '---' else '---', '-' if horizontale[i][3] == '---' else verticale[i + 1 if i < 8 else 0][4],
-                horizontale[i][4] if horizontale[i][3] != '---' else '---', '-' if horizontale[i][4] == '---' else verticale[i + 1 if i < 8 else 0][5],
-                horizontale[i][5] if horizontale[i][4] != '---' else '---', '-' if horizontale[i][5] == '---' else verticale[i + 1 if i < 8 else 0][6],
-                horizontale[i][6] if horizontale[i][5] != '---' else '---', '-' if horizontale[i][6] == '---' else verticale[i + 1 if i < 8 else 0][7],
-                horizontale[i][7] if horizontale[i][6] != '---' else '---', '-' if horizontale[i][7] == '---' else verticale[i + 1 if i < 8 else 0][8],
-                horizontale[i][8] if horizontale[i][7] != '---' else '---', '-' if horizontale[i][8] == '---' else verticale[i + 1 if i < 8 else 0][0]
+            sortie += "{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}{}".format(horizontale[i][0],
+                '-' if horizontale[i][0] == '---' else verticale[i + 1 if i < 8 else 0][1],
+                horizontale[i][1] if horizontale[i][0] != '---' else '---',
+                '-' if horizontale[i][1] == '---' else verticale[i + 1 if i < 8 else 0][2],
+                horizontale[i][2] if horizontale[i][1] != '---' else '---',
+                '-' if horizontale[i][2] == '---' else verticale[i + 1 if i < 8 else 0][3],
+                horizontale[i][3] if horizontale[i][2] != '---' else '---',
+                '-' if horizontale[i][3] == '---' else verticale[i + 1 if i < 8 else 0][4],
+                horizontale[i][4] if horizontale[i][3] != '---' else '---',
+                '-' if horizontale[i][4] == '---' else verticale[i + 1 if i < 8 else 0][5],
+                horizontale[i][5] if horizontale[i][4] != '---' else '---',
+                '-' if horizontale[i][5] == '---' else verticale[i + 1 if i < 8 else 0][6],
+                horizontale[i][6] if horizontale[i][5] != '---' else '---',
+                '-' if horizontale[i][6] == '---' else verticale[i + 1 if i < 8 else 0][7],
+                horizontale[i][7] if horizontale[i][6] != '---' else '---',
+                '-' if horizontale[i][7] == '---' else verticale[i + 1 if i < 8 else 0][8],
+                horizontale[i][8] if horizontale[i][7] != '---' else '---',
+                '-' if horizontale[i][8] == '---' else verticale[i + 1 if i < 8 else 0][0]
             )
             sortie = sortie[:-1]
             sortie += "|\n"
@@ -85,8 +93,8 @@ def afficher_damier_ascii(etat_de_jeu):
 if __name__ == '__main__':
     pass
     #init = api.initialiser_parties('islev54')
-    #print(init[0]) 
-    #partietest4 = '867b212b-4faa-41cf-99f4-d87951ba25ae'
+    #print(init[0])
+    #partietest4 = '03f23797-b32b-4f72-938f-456309901202'
     #coup = api.jouer_coup(partietest4, 'D', (5, 2))
     #afficher_damier_ascii(coup['état'])
     #print(coup)
